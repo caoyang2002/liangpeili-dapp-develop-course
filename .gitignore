@@ -1,3 +1,8 @@
+# private-config
+
+connect_remix-ide-web.sh
+.env
+
 # Logs
 logs
 *.log
