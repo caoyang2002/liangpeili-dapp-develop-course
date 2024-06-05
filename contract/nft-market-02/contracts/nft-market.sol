@@ -103,19 +103,19 @@ contract Market {
     }
 
     function removeOrder(uint256 _tokenId) internal {
-      uint256 index = idToOrderIndex[_tokenId];
-      uint256 lastIndex = orders.length - 1;
-      if (index != lastIndex){
-        Order storage lastOrder = orders[lastIndex];
-        orders[index] = lastOrder;
-        idToOrderIndex[lastOrder.tokenId] = index;
-      }
-      orders.pop();
-      delete orderOfId[_tokenId];
-      delete idToOrderIndex[_tokenId];
+        uint256 index = idToOrderIndex[_tokenId];
+        uint256 lastIndex = orders.length - 1;
+        if (index != lastIndex) {
+            Order storage lastOrder = orders[lastIndex];
+            orders[index] = lastOrder;
+            idToOrderIndex[lastOrder.tokenId] = index;
+        }
+        orders.pop();
+        delete orderOfId[_tokenId];
+        delete idToOrderIndex[_tokenId];
     }
 
-
+    // https://stackoverflow.com/questions/63252057/how-to-use-bytestouint-function-in-solidity-the-one-with-assembly
     function toUint256(
         bytes memory _bytes,
         uint _start
@@ -127,5 +127,31 @@ contract Market {
             tempUint := mload(add(add(_bytes, 0x20), _start))
         }
         return tempUint;
+    }
+    function getOrderLength() external view returns (uint256) {
+        return orders.length;
+    }
+    function getAllNFTs() external view returns (Order[] memory) {
+        return orders;
+    }
+
+    
+    function getMyNFTs() external view returns (Order[] memory) {
+        uint256 length = orders.length;
+        uint256 counter = 0;
+        for (uint256 i = 0; i < length; i++) {
+            if (orders[i].seller == msg.sender) {
+                counter++;
+            }
+        }
+        Order[] memory myNFTs = new Order[](counter);
+        uint256 index = 0;
+        for (uint256 i = 0; i < length; i++) {
+            if (orders[i].seller == msg.sender) {
+                myNFTs[index] = orders[i];
+                index++;
+            }
+        }
+        return myNFTs;
     }
 }

@@ -477,10 +477,11 @@
 			]
 		},
 		"contracts/erc20-usdt.sol": {
-			"keccak256": "0xb3ce7c8922d360ae9eb73cfb71ff357b9f7e86cd1e0b6decb1e763cf4e5b032d",
+			"keccak256": "0xe934784dfb808b3279d59bcb76e58f98e944da1f9dc7846cf61600045f389e36",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://b43500b1df0b4018e2efe8d7b8c34f76ffb67d24afe31fad8b0d5571a13e6e36",
-				"dweb:/ipfs/QmW8RD6BLtMRX1qensziec1vS5jPiWgAPj88quJKDDjnUL"
+				"bzz-raw://94d5b77513235369e62bc6115335d2e26a4477334da48500c50b16e4592fb149",
+				"dweb:/ipfs/QmbyA2gPyoi3F3vuZUz2t9dBPAW4xiNoh1RAeLnB4TuaX3"
 			]
 		}
 	},
